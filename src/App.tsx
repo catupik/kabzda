@@ -1,19 +1,24 @@
 import './App.css'
-import Accordion from "./Accordion.tsx";
+import UncontrolledAccordion from "./components/Accordion/UncontrolledAccordion.tsx";
 import {UncontrolledRating} from "./components/Rating/UncontrolledRating.tsx";
-import {OnOff} from "./components/OnOff.tsx";
+import {OnOff} from "./components/OnOff/OnOff.tsx";
+import Accordion from "./components/Accordion/Accordion.tsx";
+import {useState} from "react";
 
 function App() {
 
+    const [collapsed, setCollapsed] = useState(false);
 
   return (
     <div className="App">
       <OnOff />
         <OnOff />
       <UncontrolledRating />
-        <UncontrolledRating />
-        <Accordion title={'Menu'} collapsed={true}/>
-      <Accordion title={'Users'} collapsed={false}/>
+        <UncontrolledAccordion title={'Menu'} />
+      <Accordion title={"Users"}
+                collapsed={collapsed}
+                 onChange={()=>setCollapsed(!collapsed)}
+      />
 
     </div>
   )
